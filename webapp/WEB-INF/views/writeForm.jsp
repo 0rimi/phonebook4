@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<h1>[Phonebook3]</h1>
+	<h1>[Phonebook4]</h1>
 	
 	<h2>전화번호 등록 폼(form)</h2>
 	
@@ -16,7 +16,7 @@
 	   아래에 항목을 기입하고 "등록" 버튼을 누르세요.
 	</p>
 	
-	<form action="/phonebook3/phone/write" method="get">
+	<form action="/phonebook4/phone/write" method="get">
 	이름(name) : <input type="text" name="name" value=""><br>
 	핸드폰(hp) : <input type="text" name="hp" value=""><br>
 	회사(company) : <input type="text" name="company" value=""><br>

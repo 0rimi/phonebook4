@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<h1>[phonebook3]</h1>
+	<h1>[phonebook4]</h1>
 	
 	<h2>전화번호 리스트</h2>
 	
@@ -32,17 +32,17 @@
 			</tr>
 			<tr>
 				<td>
-					<a href="/phonebook3/phone/updateForm?no=${vo.personId }">수정하기</a>
+					<a href="/phonebook4/phone/updateForm?no=${vo.personId }">수정하기</a>
 				</td>
 				<td>
-					<a href="/phonebook3/phone/delete?no=${vo.personId }">삭제하기</a>
+					<a href="/phonebook4/phone/delete?no=${vo.personId }">삭제하기</a>
 				</td>
 			</tr>
 		</table>
 		<br>
 	</c:forEach>
 
-	<a href="/phonebook3/phone/writeForm">추가하기</a>
+	<a href="/phonebook4/phone/writeForm">추가하기</a>
 	
 </body>
 </html>

@@ -17,7 +17,7 @@
 	   아래에 항목을 수정하고 "수정" 버튼을 누르세요.
 	</p>
 	
-	<form action="/phonebook3/phone/update" method="get">
+	<form action="/phonebook4/phone/update" method="get">
    		이름(name) : <input type="text" name="name" value="${pinfo.name }"><br>
    		핸드폰(hp) : <input type="text" name="hp" value="${pinfo.hp }"><br>
    		회사(company) : <input type="text" name="company" value="${pinfo.company }"><br>

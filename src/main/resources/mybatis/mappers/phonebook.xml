@@ -2,16 +2,54 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="phonebook">
-	
+
+	<!-- 결과문을 내보낼때 -->
 	<select id="selectList" resultType="com.javaex.vo.PersonVo">
 		<![CDATA[
-		SELECT person_id,
+		SELECT person_id personid,
        		   name,
        		   hp,
        		   company
 		FROM person
-		ORDER BY person_id DESC
+		ORDER BY person_id ASC
 		]]>
 	</select>
+
+	<!-- 값을 받아올때 -->
+	<insert id="insert" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+		INSERT INTO person
+		VALUES(SEQ_PERSON_ID.nextval, #{name}, #{hp}, #{company})
+		]]>
+	</insert>
+	
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+		DELETE FROM person
+		WHERE person_id = #{personId}
+		]]>
+	</delete>
+	
+	<select id="selectone" resultType="com.javaex.vo.PersonVo" parameterType="int">
+		<![CDATA[
+		SELECT person_id personid,
+			   name,
+			   hp,
+			   company
+		FROM person
+		WHERE person_id = #{no}
+		]]>
+	</select>
+	
+	<update id="update" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+		UPDATE person
+		SET	   name = #{name},
+			   hp = #{hp},
+			   company = #{company}
+		WHERE person_id = #{personId}
+		]]>
+	</update>
 
 </mapper>
