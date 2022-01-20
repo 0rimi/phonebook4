@@ -34,18 +34,18 @@ public class PhoneController {
 		return "writeForm";
 	}
 	
-	//파라미터를 직접 갖다 쓸수가 없음 frontController에서 받아오는작업필요
-	@RequestMapping(value="/write", method= {RequestMethod.GET, RequestMethod.POST})
-	public String write(@ModelAttribute PersonVo personVo) {
-		System.out.println("PhoneController > write");
-		
-		System.out.println(personVo);
-		
-		phoneDao.personInsert(personVo);
-		
-		//리다이렉트
-		return "redirect:/phone/list";	
-	}
+//	//파라미터를 직접 갖다 쓸수가 없음 frontController에서 받아오는작업필요
+//	@RequestMapping(value="/write", method= {RequestMethod.GET, RequestMethod.POST})
+//	public String write(@ModelAttribute PersonVo personVo) {
+//		System.out.println("PhoneController > write");
+//		
+//		System.out.println(personVo);
+//		
+//		phoneDao.personInsert(personVo);
+//		
+//		//리다이렉트
+//		return "redirect:/phone/list";	
+//	}
 	
 	@RequestMapping(value="/list", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) { //컨트롤러에서 모델을 통해 프론트컨트롤러로 보내!
@@ -63,55 +63,55 @@ public class PhoneController {
 		return "list";
 	}
 	
-	@RequestMapping(value="/updateForm", method= {RequestMethod.GET, RequestMethod.POST})
-	public String updateForm(@RequestParam("no") String no, Model model) { //컨트롤러에서 모델을 통해 프론트컨트롤러로 보내!
-		System.out.println("PhoneController > updateForm");
-		
-		//원래 코드값으로부터 정보 불러와서 미리 넣어주는 getPerson이용
-		int id = Integer.parseInt(no);
-		PersonVo pinfo = phoneDao.getPerson(id);
-				
-		//mvc패턴 : 모델, 컨트롤러, 뷰
-		//컨트롤러 > DS데이터를 보낸다(model)
-		model.addAttribute("pinfo", pinfo);
-		
-		return "updateForm";
-	}
+//	@RequestMapping(value="/updateForm", method= {RequestMethod.GET, RequestMethod.POST})
+//	public String updateForm(@RequestParam("no") String no, Model model) { //컨트롤러에서 모델을 통해 프론트컨트롤러로 보내!
+//		System.out.println("PhoneController > updateForm");
+//		
+//		//원래 코드값으로부터 정보 불러와서 미리 넣어주는 getPerson이용
+//		int id = Integer.parseInt(no);
+//		PersonVo pinfo = phoneDao.getPerson(id);
+//				
+//		//mvc패턴 : 모델, 컨트롤러, 뷰
+//		//컨트롤러 > DS데이터를 보낸다(model)
+//		model.addAttribute("pinfo", pinfo);
+//		
+//		return "updateForm";
+//	}
 	
-	@RequestMapping(value="/update", method= {RequestMethod.GET, RequestMethod.POST})
-	public String update(@ModelAttribute PersonVo personVo) {
-		System.out.println("PhoneController > update");
-		
-		//수정할 값불러와서 personUpdate 해주기
-		phoneDao.personUpdate(personVo);
-		
-		//리다이렉트
-		return "redirect:/phone/list";	
-	}
-	
-	@RequestMapping(value="/delete", method= {RequestMethod.GET, RequestMethod.POST})
-	public String deleteForm(@RequestParam("no") String no) {
-		System.out.println("PhoneController > delete");
-		
-		//파라미터 값 가져오기 id값
-		int id = Integer.parseInt(no);
-		
-		//삭제할 값불러와서 personDelete 해주기		
-		phoneDao.personDelete(id);
-		
-		//리다이렉트
-		return "redirect:/phone/list";	
-	}
-	
-	@RequestMapping(value="/test", method= {RequestMethod.GET, RequestMethod.POST})
-	public String test(@RequestParam(value="name") String name,
-					   @RequestParam(value="age",required=false, defaultValue="-1") int age) {		
-									//혹시나 param값이 없으면 만들어서라도 받아줘, 연결해줘
-		System.out.println(name);
-		System.out.println(age);
-		
-		return "writeForm";
-	}
+//	@RequestMapping(value="/update", method= {RequestMethod.GET, RequestMethod.POST})
+//	public String update(@ModelAttribute PersonVo personVo) {
+//		System.out.println("PhoneController > update");
+//		
+//		//수정할 값불러와서 personUpdate 해주기
+//		phoneDao.personUpdate(personVo);
+//		
+//		//리다이렉트
+//		return "redirect:/phone/list";	
+//	}
+//	
+//	@RequestMapping(value="/delete", method= {RequestMethod.GET, RequestMethod.POST})
+//	public String deleteForm(@RequestParam("no") String no) {
+//		System.out.println("PhoneController > delete");
+//		
+//		//파라미터 값 가져오기 id값
+//		int id = Integer.parseInt(no);
+//		
+//		//삭제할 값불러와서 personDelete 해주기		
+//		phoneDao.personDelete(id);
+//		
+//		//리다이렉트
+//		return "redirect:/phone/list";	
+//	}
+//	
+//	@RequestMapping(value="/test", method= {RequestMethod.GET, RequestMethod.POST})
+//	public String test(@RequestParam(value="name") String name,
+//					   @RequestParam(value="age",required=false, defaultValue="-1") int age) {		
+//									//혹시나 param값이 없으면 만들어서라도 받아줘, 연결해줘
+//		System.out.println(name);
+//		System.out.println(age);
+//		
+//		return "writeForm";
+//	}
 	
 		/*
 	//파라미터를 직접 갖다 쓸수가 없음 frontController에서 받아오는작업필요

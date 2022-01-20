@@ -1,33 +1,25 @@
 package com.javaex.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.PersonVo;
 
 @Repository //저장소의 개념으로 쓸거니까 (applicationContext참고)
-public class PhoneDao {
+public class PhoneDao2 {
 	
 	@Autowired
-	private SqlSession sqlSession;
+	private DataSource dataSource;
 	
-	
-	public List<PersonVo> getPersonList(){
-		System.out.println("PhoneDao.getPersonList()");
-		
-		List<PersonVo> pList = sqlSession.selectList("phonebook.selectList");		
-		System.out.println(pList);
-		
-		return pList;
-	}
-	
-	
-	
-	
-	/*
 	// 0. import java.sql.*;
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
@@ -269,5 +261,5 @@ public class PhoneDao {
 		close();
 		return count;
 	}
-	*/
+
 }
