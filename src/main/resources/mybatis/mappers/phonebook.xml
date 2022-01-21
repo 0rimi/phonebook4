@@ -1,48 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="phonebook">
 
+	<!-- ResultMap -->
+	<resultMap id="RMPersonVo" type="PersonVo">
+		<result column="person_id" property="personId" />
+		<result column="name" property="name" />
+		<result column="hp" property="hp" />
+		<result column="company" property="company" />
+	</resultMap>
+
+
+
 	<!-- 결과문을 내보낼때 -->
-	<select id="selectList" resultType="com.javaex.vo.PersonVo">
+	<select id="selectList" resultMap="RMPersonVo">
 		<![CDATA[
-		SELECT person_id personid,
+		SELECT person_id,
        		   name,
        		   hp,
        		   company
 		FROM person
-		ORDER BY person_id ASC
+		ORDER BY person_id desc
 		]]>
 	</select>
 
 	<!-- 값을 받아올때 -->
-	<insert id="insert" parameterType="com.javaex.vo.PersonVo">
-		<![CDATA[
-		INSERT INTO person
-		VALUES(SEQ_PERSON_ID.nextval, #{name}, #{hp}, #{company})
-		]]>
+	<!-- <insert id="insert" parameterType="PersonVo"> -->
+	<!-- <![CDATA[ -->
+	<!-- INSERT INTO person -->
+	<!-- VALUES(SEQ_PERSON_ID.nextval, #{name}, #{hp}, #{company}) -->
+	<!-- ]]> -->
+	<!-- </insert> -->
+
+	<!-- 값을 받아올때 -->
+	<insert id="insert" parameterType="map"> 
+ 		<![CDATA[ 
+ 		INSERT INTO person 
+ 		VALUES(SEQ_PERSON_ID.nextval, #{uname}, #{uhp}, #{ucompany}) 
+ 		]]>
 	</insert>
-	
-	
+
 	<delete id="delete" parameterType="int">
 		<![CDATA[
 		DELETE FROM person
 		WHERE person_id = #{personId}
 		]]>
 	</delete>
-	
-	<select id="selectone" resultType="com.javaex.vo.PersonVo" parameterType="int">
+
+	<select id="selectone" resultMap="RMPersonVo" parameterType="int">
 		<![CDATA[
-		SELECT person_id personid,
+		SELECT person_id,
 			   name,
 			   hp,
 			   company
-		FROM person
-		WHERE person_id = #{no}
+			   FROM person
+			   WHERE person_id = #{no}
 		]]>
 	</select>
-	
-	<update id="update" parameterType="com.javaex.vo.PersonVo">
+
+	<update id="update" parameterType="PersonVo">
 		<![CDATA[
 		UPDATE person
 		SET	   name = #{name},

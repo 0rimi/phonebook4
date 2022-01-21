@@ -1,6 +1,8 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ public class PhoneDao {
 		return pList;
 	}
 	
-	
+	/*
 	//추가
 	public int personInsert(PersonVo personVo) {
 		System.out.println("PhoneDao.personInsert()");
@@ -34,6 +36,25 @@ public class PhoneDao {
 		
 		return count;
 	}
+	*/
+	
+	//추가
+	public int personInsert(PersonVo personVo) {
+		System.out.println("PhoneDao.personInsert() 파라미터 여러개 받을때");
+	
+		//자료형이 다 다르면 String,Object
+		Map<String, String> personMap = new HashMap<String, String>();
+		personMap.put("uname", personVo.getName());
+		personMap.put("uhp", personVo.getHp());
+		personMap.put("ucompany", personVo.getCompany());
+		System.out.println(personMap);
+		
+		int count = sqlSession.insert("phonebook.insert",personMap);
+		System.out.println(count+"건이 추가되었습니다.");
+		
+		return count;
+	}
+	
 	
 	//삭제
 	public int personDelete(int personId) {
@@ -54,6 +75,23 @@ public class PhoneDao {
 		
 		return personVo;
 	}
+	
+	/*
+	//특정한 사람 불러오기
+		public Map<String, Object> getPerson(int no) {
+			System.out.println("PhoneDao.getPerson");
+			
+			Map<String, Object> personMap = sqlSession.selectOne("phonebook.selectone");
+			System.out.println(personMap.keySet());
+			System.out.println(personMap);
+			
+			System.out.println(personMap.get("NAME"));
+			System.out.println(personMap.get("PERSON_ID"));
+			
+			return personMap;
+		}
+	*/	
+	
 	
 	//업데이트
 	public int personUpdate(PersonVo personVo) {

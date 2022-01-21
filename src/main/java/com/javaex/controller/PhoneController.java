@@ -108,7 +108,7 @@ public class PhoneController {
 //		return "writeForm";
 //	}
 	
-		/*
+	/*
 	//파라미터를 직접 갖다 쓸수가 없음 frontController에서 받아오는작업필요
 	@RequestMapping(value="/phone/write", method= {RequestMethod.GET, RequestMethod.POST})
 	public String write(@RequestParam("name") String name,
