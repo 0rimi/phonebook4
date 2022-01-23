@@ -73,6 +73,7 @@ public class PhoneDao {
 		
 		PersonVo personVo = sqlSession.selectOne("phonebook.selectone", no);
 		
+		
 		return personVo;
 	}
 	
